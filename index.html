@@ -10,10 +10,11 @@
     <style>
         body {
             background-color: white;
-            color: white; /* Changed text color to black */
+            color: black; /* Ensuring default text is black */
         }
 
-        span {
+        #container {
+            /* Initially hide the container */
             display: none;
         }
 
@@ -23,24 +24,32 @@
             gap: 15px;
         }
 
-        div:hover {
-            color: black; /* Changed hover color to gray for visibility on white background */
+        #hoverArea:hover #container {
+            /* Show the container when #hoverArea is hovered */
+            display: block;
         }
-        
+
+        div:hover {
+            background-color: lightgray; /* Providing visual feedback on hover */
+            color: black;
+        }
+
         .button {
             cursor: pointer;
             padding: 5px;
-            color: black; /* Ensure button text is black */
+            color: black;
+            border: 1px solid black; /* Adding a border for better visibility */
+            background-color: white;
         }
     </style>
 </head>
 <body>
-    <div>
-        <div id="buttons">
-            vwepokop
-            <!-- Buttons will be dynamically generated here -->
+    <div id="hoverArea">
+        <div id="container">
+            <div id="buttons">
+                
+                </div>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
+    </body>
 </html>
