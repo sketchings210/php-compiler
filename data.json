@@ -1,0 +1,82 @@
+[
+  {
+    "title": "PHP1-Installation-and-Hello-World",
+    "code": "<?php\necho \"Hello, World!\";\n?>",
+    "output": "Hello, World!"
+  },
+  {
+    "title": "PHP2-Sum-of-Digits",
+    "code": "<?php\n$number = 12345;\n$sum = 0;\nwhile ($number > 0) {\n    $digit = $number % 10;\n    $sum += $digit;\n    $number = (int)($number / 10);\n}\necho \"The sum of the digits of 12345 is: $sum\";\n?>",
+    "output": "The sum of the digits of 12345 is: 15"
+  },
+  {
+    "title": "PHP3-Check-Prime-Number",
+    "code": "<?php\n$number = 17;\n$isPrime = true;\nif ($number < 2) {\n    $isPrime = false;\n}\nfor ($i = 2; $i <= sqrt($number); $i++) {\n    if ($number % $i == 0) {\n        $isPrime = false;\n        break;\n    }\n}\nif ($isPrime) {\n    echo \"$number is a prime number.\";\n} else {\n    echo \"$number is not a prime number.\";\n}\n?>",
+    "output": "17 is a prime number."
+  },
+  {
+    "title": "PHP4-Factorial",
+    "code": "<?php\n$number = 5;\n$factorial = 1;\nfor ($i = 1; $i <= $number; $i++) {\n    $factorial *= $i;\n}\necho \"The factorial of $number is: $factorial\";\n?>",
+    "output": "The factorial of 5 is: 120"
+  },
+  {
+    "title": "PHP5-Sort-Array-Ascending",
+    "code": "<?php\n$array = [5, 2, 8, 1, 3];\nsort($array);\necho \"Sorted Array (Ascending Order): \" . implode(\", \", $array);\n?>",
+    "output": "Sorted Array (Ascending Order): 1, 2, 3, 5, 8"
+  },
+  {
+    "title": "PHP6-Mathematical-Operations",
+    "code": "<?php\nif ($_SERVER[\"REQUEST_METHOD\"] == \"POST\") {\n    $num1 = $_POST['num1'];\n    $num2 = $_POST['num2'];\n    $sum = $num1 + $num2;\n    $difference = $num1 - $num2;\n    $product = $num1 * $num2;\n    $modulus = $num1 % $num2;\n    $average = ($num1 + $num2) / 2;\n    $division = $num1 / $num2;\n    $greatest = max($num1, $num2);\n    $square1 = $num1 * $num1;\n    $square2 = $num2 * $num2;\n    echo \"Addition: $sum<br>\";\n    echo \"Subtraction: $difference<br>\";\n    echo \"Multiplication: $product<br>\";\n    echo \"Modulus: $modulus<br>\";\n    echo \"Average: $average<br>\";\n    echo \"Division: $division<br>\";\n    echo \"Greatest Number: $greatest<br>\";\n    echo \"Square of $num1: $square1<br>\";\n    echo \"Square of $num2: $square2\";\n}\n?>\n<!DOCTYPE html>\n<html>\n<body>\n<form method=\"post\" action=\"\">\n    <label>Enter first number:</label>\n    <input type=\"number\" name=\"num1\" required><br>\n    <label>Enter second number:</label>\n    <input type=\"number\" name=\"num2\" required><br>\n    <input type=\"submit\" value=\"Calculate\">\n</form>\n</body>\n</html>",
+    "output": "Addition: 13\nSubtraction: 7\nMultiplication: 30\nModulus: 1\nAverage: 6.5\nDivision: 3.3333333333333\nGreatest Number: 10\nSquare of 10: 100\nSquare of 3: 9"
+  },
+  {
+    "title": "PHP7-Background-Color-By-Hour",
+    "code": "<?php\n$hour = date('G');\nif ($hour >= 6 && $hour < 12) {\n    $bgColor = \"yellow\";\n    $greeting = \"Good Morning!\";\n} elseif ($hour >= 12 && $hour < 18) {\n    $bgColor = \"green\";\n    $greeting = \"Good Afternoon!\";\n} else {\n    $bgColor = \"blue\";\n    $greeting = \"Good Evening!\";\n}\n?>\n<!DOCTYPE html>\n<html>\n<body style=\"background-color: <?php echo $bgColor; ?>\">\n    <h2><?php echo $greeting; ?></h2>\n    <p>Current Hour: <?php echo $hour; ?></p>\n</body>\n</html>",
+    "output": "Good Morning!\nCurrent Hour: 10 (yellow background)"
+  },
+  {
+    "title": "PHP8-Registration-Form",
+    "code": "<?php\nif ($_SERVER[\"REQUEST_METHOD\"] == \"POST\") {\n    $name = $_POST['name'];\n    $email = $_POST['email'];\n    $password = $_POST['password'];\n    echo \"<h2>Registration Successful!</h2>\";\n    echo \"Name: $name<br>\";\n    echo \"Email: $email<br>\";\n    echo \"Password: [Hidden for security]\";\n}\n?>\n<!DOCTYPE html>\n<html>\n<body>\n<form method=\"post\" action=\"\">\n    <label>Name:</label>\n    <input type=\"text\" name=\"name\" required><br>\n    <label>Email:</label>\n    <input type=\"email\" name=\"email\" required><br>\n    <label>Password:</label>\n    <input type=\"password\" name=\"password\" required><br>\n    <input type=\"submit\" value=\"Register\">\n</form>\n</body>\n</html>",
+    "output": "Registration Successful!\nName: John\nEmail: john@example.com\nPassword: [Hidden for security]"
+  },
+  {
+    "title": "PHP9-Database-Insert-Display",
+    "code": "<?php\n$conn = mysqli_connect(\"localhost\", \"root\", \"\", \"test_db\");\nif ($_SERVER[\"REQUEST_METHOD\"] == \"POST\") {\n    $name = $_POST['name'];\n    mysqli_query($conn, \"INSERT INTO users (name) VALUES ('$name')\");\n}\n$result = mysqli_query($conn, \"SELECT * FROM users\");\nwhile ($row = mysqli_fetch_assoc($result)) {\n    echo \"ID: {$row['id']}, Name: {$row['name']}<br>\";\n}\nmysqli_close($conn);\n?>\n<form method=\"post\">\n    Name: <input type=\"text\" name=\"name\" required><br>\n    <input type=\"submit\" value=\"Add\">\n</form>",
+    "output": "ID: 1, Name: Alice"
+  },
+  {
+    "title": "PHP10-String-Operations",
+    "code": "<?php\n$string1 = \"Hello, World!\";\n$string2 = \" Welcome to PHP!\";\n$concatenated = $string1 . $string2;\n$length = strlen($string1);\n$substring = substr($string1, 0, 5);\n$uppercase = strtoupper($string1);\n$lowercase = strtolower($string1);\n$replaced = str_replace(\"World\", \"PHP\", $string1);\necho \"Concatenated String: $concatenated<br>\";\necho \"Length of String: $length<br>\";\necho \"Substring (first 5 chars): $substring<br>\";\necho \"Uppercase: $uppercase<br>\";\necho \"Lowercase: $lowercase<br>\";\necho \"Replaced String: $replaced\";\n?>",
+    "output": "Concatenated String: Hello, World! Welcome to PHP!\nLength of String: 13\nSubstring (first 5 chars): Hello\nUppercase: HELLO, WORLD!\nLowercase: hello, world!\nReplaced String: Hello, PHP!"
+  },
+  {
+    "title": "PHP11-Login-Logout-System",
+    "code": "<?php\nsession_start();\n$conn = mysqli_connect(\"localhost\", \"root\", \"\", \"test_db\");\nif ($_SERVER[\"REQUEST_METHOD\"] == \"POST\") {\n    $username = $_POST['username'];\n    $password = $_POST['password'];\n    $result = mysqli_query($conn, \"SELECT * FROM users WHERE username='$username' AND password='$password'\");\n    if (mysqli_num_rows($result) > 0) {\n        $_SESSION['username'] = $username;\n        echo \"Login successful!\";\n    } else {\n        echo \"Invalid credentials!\";\n    }\n}\nif (isset($_GET['logout'])) {\n    session_destroy();\n    echo \"Logged out!\";\n}\n?>\n<form method=\"post\">\n    Username: <input type=\"text\" name=\"username\" required><br>\n    Password: <input type=\"password\" name=\"password\" required><br>\n    <input type=\"submit\" value=\"Login\">\n</form>\n<a href=\"?logout=1\">Logout</a>",
+    "output": "Login successful!"
+  },
+  {
+    "title": "PHP12-Merge-Arrays",
+    "code": "<?php\n$array1 = [1, 2, 3];\n$array2 = [4, 5, 6];\n$mergedArray = array_merge($array1, $array2);\necho \"Merged Array (using array_merge):<br>\";\nprint_r($mergedArray);\necho \"<br>\";\n$manualMerge = $array1;\nforeach ($array2 as $element) {\n    $manualMerge[] = $element;\n}\necho \"Merged Array (without array_merge):<br>\";\nprint_r($manualMerge);\n?>",
+    "output": "Merged Array (using array_merge):\nArray ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 [4] => 5 [5] => 6 )\nMerged Array (without array_merge):\nArray ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 [4] => 5 [5] => 6 )"
+  },
+  {
+    "title": "PHP13-Create-File",
+    "code": "<?php\n$file = fopen(\"sample.txt\", \"w\");\nif ($file) {\n    fwrite($file, \"This is a sample text written to the file.\");\n    fclose($file);\n    echo \"File created and written successfully!\";\n} else {\n    echo \"Failed to create file!\";\n}\n?>",
+    "output": "File created and written successfully!"
+  },
+  {
+    "title": "PHP14-Read-File",
+    "code": "<?php\n$file = fopen(\"sample.txt\", \"r\");\nif ($file) {\n    while (!feof($file)) {\n        $line = fgets($file);\n        echo $line . \"<br>\";\n    }\n    fclose($file);\n} else {\n    echo \"Failed to open file!\";\n}\n?>",
+    "output": "This is a sample text written to the file."
+  },
+  {
+    "title": "PHP15-Display-Table",
+    "code": "<?php\n$data = [\n    \"Name\" => \"John Doe\",\n    \"Age\" => 30\n];\n?>\n<!DOCTYPE html>\n<html>\n<body>\n<table border=\"1\">\n    <tr>\n        <th>String</th>\n        <th>Value</th>\n    </tr>\n    <?php foreach ($data as $key => $value) { ?>\n    <tr>\n        <td><?php echo $key; ?></td>\n        <td><?php echo $value; ?></td>\n    </tr>\n    <?php } ?>\n</table>\n</body>\n</html>",
+    "output": "| String | Value    |\n|--------|----------|\n| Name   | John Doe |\n| Age    | 30       |"
+  },
+  {
+    "title": "PHP16-Last-Error",
+    "code": "<?php\ntry {\n    $result = 10 / 0;\n} catch (DivisionByZeroError $e) {\n    echo \"Error: \" . $e->getMessage();\n}\n?>",
+    "output": "Error: Division by zero"
+  }
+]
