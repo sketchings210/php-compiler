@@ -10,36 +10,47 @@
     <style>
         body {
             background-color: white;
-            color: black; /* Ensuring default text is black */
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        #hoverArea {
+            width: 100%;
+            min-height: 100px;
         }
 
         #container {
-            /* Initially hide the container */
             display: none;
+            background-color: white;
+        }
+
+        #hoverArea:hover #container {
+            display: block;
         }
 
         #buttons {
             display: flex;
             flex-direction: row;
             gap: 15px;
-        }
-
-        #hoverArea:hover #container {
-            /* Show the container when #hoverArea is hovered */
-            display: block;
-        }
-
-        div:hover {
-            background-color: lightgray; /* Providing visual feedback on hover */
-            color: black;
+            padding: 10px;
         }
 
         .button {
             cursor: pointer;
             padding: 5px;
             color: black;
-            border: 1px solid black; /* Adding a border for better visibility */
+            border: 1px solid black;
             background-color: white;
+        }
+
+        .button:hover {
+            background-color: lightgray;
+            color: black;
+        }
+
+        .button span {
+            display: none;
         }
     </style>
 </head>
@@ -47,9 +58,11 @@
     <div id="hoverArea">
         <div id="container">
             <div id="buttons">
-                
-                </div>
+                <!-- Buttons will be populated by JavaScript -->
+            </div>
         </div>
     </div>
-    </body>
+    <script src="script.js">
+    </script>
+</body>
 </html>
